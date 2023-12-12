@@ -30,7 +30,7 @@ end
 data=X;
 numTimeStepsTrain= 397;
 numTimeStepsTest=length(data)-numTimestepsTrain;
-dataTrain=data(1:numTimestepsTrain);
+dataTrain=data(1:numTimestepsTrain+1);
 dataTest=data(numTimestepsTrain+1:end);
     
 %XTrain = [dataTrain(1:end-3),dataTrain(2:end-2),dataTrain(3:end-1)];

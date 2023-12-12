@@ -1,0 +1,19 @@
+alpha_pred=alphavec(end-95:end);
+beta_pred=betavec(end-95:end);
+retGOOG_pred=retGOOG(end-95:end);
+retTTWO_pred=retTTWO(end-95:end);
+
+PL=0;
+for i=1:length(alpha_pred)-1
+    pred_prof=YPred2(i+1)-YTest(i);
+    if pred_prof > 0
+        daily_PL=-retGOOG_pred(i)+beta_pred(i)*retTTWO_pred(i)-alpha_pred(i);
+    elseif pred_prof < 0
+        daily_PL=retGOOG_pred(i)-beta_pred(i)*retTTWO_pred(i)-alpha_pred(i);
+    else
+        daily_PL=0;
+    end
+    PL(i)=daily_PL;
+end
+
+cumsum(PL)
